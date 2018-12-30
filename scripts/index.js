@@ -141,7 +141,7 @@ function showCards(obj) {
     div.appendChild(name);
 
     var year = document.createElement('p');
-    year.innerText = '(' + obj[i].born + ' - ' + obj[i].died + ')';
+    year.innerText = '(' + obj[i].born + ' - \u271E' + obj[i].died + ')';
     year.style.marginBottom = '20px';
     div.appendChild(year);
     if (obj[i].mother) {
