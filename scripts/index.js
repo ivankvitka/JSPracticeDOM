@@ -71,7 +71,7 @@ function addChildrenTo(block, count, type) {
 function replaceElementBy(blockCurrent, blockToReplace) {
   var block = document.querySelector(blockCurrent);
   var newBlock = document.createElement(blockToReplace);
-  newBlock.innerText = 'HELLO AGAIN\n';
+  newBlock.innerText = 'HELLO AGAIN, and AGAIN AND AGAIN\n';
   newBlock.style.fontSize = '25px';
   block.parentNode.replaceChild(newBlock, block);
 }
@@ -80,12 +80,15 @@ function paintRandomColors(elemTag) {
   var elem = document.getElementsByTagName(elemTag)[0];
   var colorArr = [];
   var charArr = [];
-  var color = 0xff0000;
+  var color = 0xffff00;
   var arrLength = elem.innerText.length;
 
   for (var i = 0; i < arrLength; i++) {
+    if (color <= 0) {
+      color = 0xffff00 - color;
+    }
     colorArr.push(color.toString(16));
-    color -= 0xfaadf;
+    color -= 0xfaaa;
     charArr.push(elem.innerText[i]);
   }
   elem.innerText = '';
@@ -196,9 +199,7 @@ function calculateMiddleDifference(obj) {
   var sum = 0;
   var count = 0;
   for (var i = 0; i < obj.length; i++) {
-    if (!obj[i].mother) {
-      continue;
-    } else {
+    if (obj[i].mother) {
       var child = obj[i];
       for (var j = 0; j < obj.length; j++) {
         var mother = obj[j];
